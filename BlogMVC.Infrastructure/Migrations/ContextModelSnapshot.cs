@@ -30,7 +30,7 @@ namespace BlogMVC.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -42,22 +42,22 @@ namespace BlogMVC.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Test"
+                            CategoryName = "Test"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Test1"
+                            CategoryName = "Test1"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Test2"
+                            CategoryName = "Test2"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Test3"
+                            CategoryName = "Test3"
                         });
                 });
 

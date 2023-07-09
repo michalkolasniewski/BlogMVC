@@ -39,10 +39,16 @@ namespace BlogMVC.Infrastructure
                 .WithMany(t => t.PostTags)
                 .HasForeignKey(pt => pt.TagId);
 
-            foreach (var e in Enum.GetValues(typeof(CategoryNamesEnum)).Cast<CategoryNamesEnum>())
-            {
-                builder.Entity<Category>().HasData(new Category { Id = (int)e, Name = e.ToString()});
-            }
+            builder.Entity<Category>()
+                .HasData(Enum.GetValues(typeof(CategoryNamesEnum))
+                .Cast<CategoryNamesEnum>()
+                .Select(e => new Category
+                {
+                    Id = (int)e,
+                    CategoryName = e.ToString()
+                }
+                    )
+                );
         }
     }
 }
